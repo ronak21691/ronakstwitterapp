@@ -39,7 +39,7 @@ group :test do
   # gem 'wdm', '0.1.0'
 end
 
-# gem 'sass-rails', '4.0.1'
+gem 'sass-rails', '4.0.1'
 gem "sass", "~> 3.2.5"
 gem 'uglifier', '2.1.1'
 gem 'coffee-rails', '4.0.1'
