@@ -60,6 +60,23 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
 
+  def favorites
+    user = User.find(params[:user_id])
+    micropost = Micropost.find_by(:id => params[:post_id])
+    already_favorite = user.favorites.where(:micropost_id => params[:post_id]).first
+    if already_favorite.nil?
+      user.favorites.create(:micropost_id => params[:post_id])
+      micropost.increment!(:favorite_count)
+    else
+      puts "This post is already in favorites for User: #{user.id} "
+      already_favorite.destroy
+      micropost.decrement!(:favorite_count)
+    end
+    render :json => {
+        :data => micropost.favorite_count
+    }
+  end
+
   private
 
     def user_params

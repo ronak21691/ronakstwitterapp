@@ -12,4 +12,20 @@
                                      data: { confirm: "You sure?" },
                                      title: feed_item.content %>
   <% end %>
+  <br>
+  <span class="star_image" onclick="favorites(this)" id="<%= feed_item.id%>">
+      <%= javascript_tag do %>
+            window.user_id = "<%= feed_item.user_id %>";
+      <% end %>
+    <span id="<%= feed_item.user.id %>"></span>
+      <span class="over-img" title="Favorites">
+        <%= image_tag("star-off.png",height: "17",width: "18", alt: "Favorites") %>
+      </span>
+      <span class="over-img" title="Favorites" style="display: none">
+        <%= image_tag("star-on.png",height: "17",width: "18", alt: "Favorites") %>
+      </span>
+      <span id="<%= feed_item.id%>-count" align="left">
+        <%= feed_item.favorite_count %>
+      </span>
+  </span>
 </li>
