@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/bmabey/database_cleaner.git
-  revision: 3b109a1ca8233d397a8cfc06f6cec2e688037faa
+  revision: 46ef3b2b5ec1c9556f3e7371975fe3560442d4c5
   specs:
-    database_cleaner (1.3.0)
+    database_cleaner (1.4.0)
 
 GEM
   remote: https://rubygems.org/
