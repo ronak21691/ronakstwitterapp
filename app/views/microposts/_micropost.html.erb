@@ -11,10 +11,10 @@
   <br>
   <span class="star_image" onclick="favorites(this)" id="<%= micropost.id%>">
       <%= javascript_tag do %>
-            window.user_id = "<%= micropost.user_id %>";
+            window.user_id = "<%= current_user.id %>";
       <% end %>
 
-      <% if micropost.favorites.where(:user_id => micropost.user_id).first.nil? %>
+      <% if micropost.favorites.where(:user_id => current_user.id).first.nil? %>
             <%= image_tag("star-off.png",height: "17",width: "18", alt: "Favorites", id: "off_img") %>
       <% else %>
             <%= image_tag("star-on.png",height: "17",width: "18", alt: "Favorites", id: "on_img") %>
