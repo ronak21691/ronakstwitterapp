@@ -17,13 +17,13 @@
       <%= javascript_tag do %>
             window.user_id = "<%= feed_item.user_id %>";
       <% end %>
-    <span id="<%= feed_item.user.id %>"></span>
-      <span class="over-img" title="Favorites">
-        <%= image_tag("star-off.png",height: "17",width: "18", alt: "Favorites") %>
-      </span>
-      <span class="over-img" title="Favorites" style="display: none">
-        <%= image_tag("star-on.png",height: "17",width: "18", alt: "Favorites") %>
-      </span>
+
+      <% if feed_item.favorites.where(:user_id => feed_item.user_id).first.nil? %>
+        <%= image_tag("star-off.png",height: "17",width: "18", alt: "Favorites", id: "off_img") %>
+      <% else %>
+        <%= image_tag("star-on.png",height: "17",width: "18", alt: "Favorites", id: "on_img") %>
+      <% end %>
+
       <span id="<%= feed_item.id%>-count" align="left">
         <%= feed_item.favorite_count %>
       </span>

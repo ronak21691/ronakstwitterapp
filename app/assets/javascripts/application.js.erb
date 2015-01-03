@@ -26,12 +26,10 @@
 //    {
 //        $(this).find('.over-img').toggle();
 //    });
-//
+//]
 //});
 
 function favorites(parent) {
-    $(parent).find('.over-img').toggle();
-    console.log(parent);
     var datastring = {'post_id': parent.id, 'user_id': user_id};
     console.log(datastring);
     $.ajax({
@@ -41,7 +39,15 @@ function favorites(parent) {
         success: function (data) {
             console.log(data);
             document.getElementById(parent.id + '-count').innerHTML = data.data;
+            if (data.value) {
+                $(parent).find('#off_img').attr("src", "<%= image_path "star-off.png", :id => "#off_img" %>" );
+                $(parent).find('#on_img').attr("src", "<%= image_path "star-off.png", :id => "#on_img" %>" );
+            }
+            else {
+                $(parent).find('#on_img').attr("src", "<%= image_path "star-on.png", :id => "#on_img" %>" );
+                $(parent).find('#off_img').attr("src", "<%= image_path "star-on.png", :id => "#off_img" %>" );
+            }
         }
     });
     return false;
-};
+}

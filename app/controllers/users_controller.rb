@@ -73,7 +73,8 @@ class UsersController < ApplicationController
       micropost.decrement!(:favorite_count)
     end
     render :json => {
-        :data => micropost.favorite_count
+        :data => micropost.favorite_count,
+        :value => !already_favorite.nil?
     }
   end
 
